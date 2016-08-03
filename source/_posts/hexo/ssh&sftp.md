@@ -1,6 +1,6 @@
 title: "shell/ssh&sftp"
 date: 2016-08-01 20:33:53
-tags: shell
+tags: hexo, shell
 ---
 
 ### 与远程服务器的交互（shell）
