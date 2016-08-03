@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
-language:
-timezone:
+title: Xiangry
+subtitle: 思绪在这里驻足
+description: 思绪来的快，走的也快;把自己的思绪存在这里,时长来翻一下;
+author: xiangry
+email: mlxiangry@qq.com
+language: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
