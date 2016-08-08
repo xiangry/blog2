@@ -12,8 +12,20 @@ tags:
 ###### Error: getaddrinfo ENOTFOUND
 
 执行`hexo s`后报错[error] Error: getaddrinfo ENOTFOUND`。
-	
-原因是由于`/etc/hosts`文件中没有`127.0.0.1  localhost`这句，它可以让nodejs定位本机服务。过去修改过hosts文件把它注释掉了，所以出现了问题。
+
+查看`hexo`的config.js文件，可以使用`locate`查找。我的目录是`/usr/local/lib/node_modules/hexo/lib/loaders/config.js`，打开可以看到默认设置：
+
+```
+server_ip: 'localhost',   # 会查找hosts文件配置
+```	
+
+于是这个问题的原因是由于`/etc/hosts`文件中没有`127.0.0.1  localhost`这句，它可以让nodejs定位本机服务。过去修改过hosts文件把它注释掉了，所以出现了问题。
+
+问题解决方法：还原`hosts`文件关于localhost的设置或者修改`config.js`文件的这句改为：
+
+```
+server_ip: '127.0.0.1',   # 会查找hosts文件配置
+```
 	
 详细问题参考[Error: getaddrinfo ENOTFOUND][1]。
 
