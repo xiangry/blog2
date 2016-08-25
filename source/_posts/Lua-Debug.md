@@ -2,8 +2,10 @@ title: Lua Debug
 date: 2014-10-16 14:18:54
 tags: Lua
 ---
-<!-- more -->
+
 _当要定位lua某个方法被调用的位置通常可以通过打印堆栈信息来做到，刚接触，找到这篇文章["Lua debug"](http://see.sl088.com/wiki/Lua_debug "Lua Debug")_
+
+<!-- more -->
 
 ---
 ###debug
