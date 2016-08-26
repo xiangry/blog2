@@ -38,7 +38,7 @@ nginx启动、重启、关闭
 
 nginx的配置文件是一个纯文本文件，它一般位于Nginx安装目录下，整个配置文件是以block的形式组织的。每个block一般以一个大括号`{}`来表示。block可以分为几个层次，整个配置文件中Main指令位于最高层，在Main层下面可以有Events、HTTP等层级，而在HTTP层中又包含有Server层，即server block。server block 中又可以分为location层，并且一个server block中可以包含有多个location block。
 
-![配置结构图](./nginx_config.png)
+![配置结构图][nginx_config]
 
 ngxin.conf的配置文件详解：
 
@@ -163,3 +163,5 @@ ngxin.conf的配置文件详解：
 
 
 [1]:http://blog.csdn.net/shimiso/article/details/8690897   Nginx的介绍和使用
+
+[nginx_config]:http://ochy83snh.bkt.clouddn.com/blog/img/nginx_config.png "nginx_config"
