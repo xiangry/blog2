@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>shell/ssh&amp;sftp | Xiangry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="与远程服务器的交互（shell）sshssh是比较可靠的、专为远程登录会话和其他网络服务提供安全性的协议。
+从客户端来看，SSH提供了两种级别的安全
+
+基于口令的安全验证：
+ 只要知道账号和口令，记忆可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想要连接的服务器，可能会有别的服务器在冒充真正的服务器，也就是收到&quot;中间人&quot;这种方式的攻击。
+
+基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell/ssh&sftp">
+<meta property="og:url" content="http://xiangry.com/2016/08/01/hexo/ssh&sftp/">
+<meta property="og:site_name" content="Xiangry">
+<meta property="og:description" content="与远程服务器的交互（shell）sshssh是比较可靠的、专为远程登录会话和其他网络服务提供安全性的协议。
+从客户端来看，SSH提供了两种级别的安全
+
+基于口令的安全验证：
+ 只要知道账号和口令，记忆可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想要连接的服务器，可能会有别的服务器在冒充真正的服务器，也就是收到&quot;中间人&quot;这种方式的攻击。
+
+基">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell/ssh&sftp">
+<meta name="twitter:description" content="与远程服务器的交互（shell）sshssh是比较可靠的、专为远程登录会话和其他网络服务提供安全性的协议。
+从客户端来看，SSH提供了两种级别的安全
+
+基于口令的安全验证：
+ 只要知道账号和口令，记忆可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想要连接的服务器，可能会有别的服务器在冒充真正的服务器，也就是收到&quot;中间人&quot;这种方式的攻击。
+
+基">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Xiangry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Xiangry</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">思绪在这里驻足</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://xiangry.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo/ssh&amp;sftp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/01/hexo/ssh&sftp/" class="article-date">
+  <time datetime="2016-08-01T12:33:53.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell/ssh&amp;sftp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="与远程服务器的交互（shell）"><a href="#与远程服务器的交互（shell）" class="headerlink" title="与远程服务器的交互（shell）"></a>与远程服务器的交互（shell）</h3><h4 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h4><p>ssh是比较可靠的、专为<code>远程登录</code>会话和其他<code>网络服务</code>提供安全性的协议。</p>
+<p>从客户端来看，SSH提供了两种级别的安全</p>
+<ol>
+<li><p><strong>基于口令的安全验证：</strong></p>
+<p> 只要知道账号和口令，记忆可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想要连接的服务器，可能会有别的服务器在冒充真正的服务器，也就是收到&quot;中间人&quot;这种方式的攻击。</p>
+</li>
+<li><p><strong>基于秘钥的安全验证：</strong></p>
+<p> 需要依靠秘钥，也就是你必须为自己创建一对秘钥，并把公共秘钥放在需要访问的服务器上。如果你要连接SSH服务器上，客户端就会向服务器发出请求，请求你的秘钥进行安全验证。服务器在收到请求后，先在该服务器上你的主要目录下寻找你的公共秘钥，然后把它和你发送过来的公共秘钥进行比较。如果一致，服务器就会用公共秘钥加密&quot;质询（challenge）&quot;并把它发送给客户端。客户端收到后既可以用你的私人秘钥进行解密，再发送给服务器。这种方式不需要在网上传送口令。避免了&quot;中间人&quot;这种攻击方式（因为没有你的私人秘钥）。但是整个登陆过程可能会需要10秒。</p>
+</li>
+</ol>
+<h5 id="常用方式"><a href="#常用方式" class="headerlink" title="常用方式"></a>常用方式</h5><p>指定用户访问</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">ssh</span> -l root <span class="number">192.168.0.1</span></div><div class="line">ssh root@<span class="number">192.168.0.1</span></div></pre></td></tr></table></figure>
+
+<p>如果修改过ssh登录端口可以</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># 修改/etc/ssh/sshd_config 可以改ssh登录端口可机制root登录。改端口可以防止被端口扫描</span></div><div class="line"><span class="preprocessor"># 修改端口 修改文件中的 #Port 22 改为  Port 123     </span></div><div class="line"><span class="preprocessor"># 禁止root登录 修改文件中的 #PermitRootLogin yes 去掉注释</span></div><div class="line">ssh -p <span class="number">123</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span></div></pre></td></tr></table></figure>
+
+<p>重试sshd服务</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">sevice</span> sshd restart</div></pre></td></tr></table></figure>
+
+<h4 id="sftp"><a href="#sftp" class="headerlink" title="sftp"></a>sftp</h4><p><code>sftp</code>是一个交互式文件传输程序。类似于<code>ftp</code>，但它机型加密传输，比<code>ftp</code>有更高的安全性。</p>
+<p>实际上<code>sftp</code>是ssh的一个程序</p>
+<h6 id="常用方式-1"><a href="#常用方式-1" class="headerlink" title="常用方式"></a>常用方式</h6><p>登录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">sftp</span> root@<span class="number">192.168.0.1</span></div></pre></td></tr></table></figure>
+
+<p>获取远程服务器上的文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">sftp&gt;</span> get /home/teat  /<span class="constant">User</span>/x/<span class="constant">Desktop</span>/</span></div></pre></td></tr></table></figure>
+
+<p>发送数据到远程服务器上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt">sftp&gt;</span> put /<span class="constant">User</span>/x/<span class="constant">Desktop</span>/test /home/test</span></div></pre></td></tr></table></figure>
+
+<p>查看目录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pwd</span>     <span class="comment"># 查看远程当前路径</span></div><div class="line">lpwd    <span class="comment"># 查看本机工作路径</span></div><div class="line"><span class="built_in">cd</span>      <span class="comment"># 改变远程路径</span></div><div class="line">lcd     <span class="comment"># 改变本地路径</span></div><div class="line"><span class="comment"># ls, rm, rmdir, mkdir 这些命令同理</span></div></pre></td></tr></table></figure>
+
+<p>离开sftp</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 以下命令同理</span></div><div class="line"><span class="keyword">exit</span></div><div class="line">quit</div><div class="line">bye</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xiangry.com/2016/08/01/hexo/ssh&sftp/" data-id="7imhvhrskqi841dy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-shell/">hexo, shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/02/游戏/游戏测评计划/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          游戏测评计划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/01/hexo/hexo发布/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo搭建记录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习记录/">学习记录</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Unix/">Linux/Unix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-shell/">hexo, shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/练-随便写点什么/">练 随便写点什么</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/霹雳布袋戏/">霹雳布袋戏</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Linux-Unix/" style="font-size: 10.00px;">Linux/Unix</a><a href="/tags/Lua/" style="font-size: 10.00px;">Lua</a><a href="/tags/hexo/" style="font-size: 15.00px;">hexo</a><a href="/tags/hexo-shell/" style="font-size: 10.00px;">hexo, shell</a><a href="/tags/lua/" style="font-size: 10.00px;">lua</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a><a href="/tags/游戏/" style="font-size: 10.00px;">游戏</a><a href="/tags/练-随便写点什么/" style="font-size: 10.00px;">练 随便写点什么</a><a href="/tags/阅读/" style="font-size: 15.00px;">阅读</a><a href="/tags/霹雳布袋戏/" style="font-size: 20.00px;">霹雳布袋戏</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/08/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/06/netstat/">netstat</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/03/hexo/Nginx-初识/">Nginx 初识</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/02/游戏/游戏测评计划/">游戏测评计划</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/hexo/ssh&sftp/">shell/ssh&amp;sftp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xiangry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>

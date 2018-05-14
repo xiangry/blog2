@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Archives: 2016/8 | Xiangry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="思绪来的快，走的也快;把自己的思绪存在这里,时长来翻一下;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xiangry">
+<meta property="og:url" content="http://xiangry.com/archives/2016/08/page/2/">
+<meta property="og:site_name" content="Xiangry">
+<meta property="og:description" content="思绪来的快，走的也快;把自己的思绪存在这里,时长来翻一下;">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xiangry">
+<meta name="twitter:description" content="思绪来的快，走的也快;把自己的思绪存在这里,时长来翻一下;">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Xiangry" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Xiangry</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">思绪在这里驻足</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://xiangry.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hexo/hexo发布" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/01/hexo/hexo发布/" class="article-date">
+  <time datetime="2016-08-01T12:33:53.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/01/hexo/hexo发布/">hexo搭建记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="HEXO"><a href="#HEXO" class="headerlink" title="HEXO"></a>HEXO</h4><p>Hexo是一个开源的静态博客生成器，特别的干净，阅读体验非常好。</p>
+<p>过去用过一段时间写一些记录，这次拾起来竟然忘记相关的操作，于是把这次搭建博客的过程记录下来。</p>
+<p>这是本人搭建的博客：www.xiangry.com</p>
+<h4 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h4><ol>
+<li><p>安装Git:
+  打算使用githua托管的随笔文件，所以给服务器安装<code>Git</code>。</p>
+</li>
+<li><p>安装hexo:
+ hexo是使用<code>node.js</code>开发的，所以需要安装<code>node</code>。<code>node</code>自带包管理器<code>nmp</code>(node package manager),可以方便的对node包进行安装、卸载、更新、查看、搜索、发布等。</p>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> yum install nodejs</div></pre></td></tr></table></figure>
+
+<pre><code>安装`hexo`用到了上面的`npm`工具：
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> -g hexo  		<span class="comment"># -g是安装到全局</span></div></pre></td></tr></table></figure>
+
+
+<ol>
+<li>安装Nginx:
+ Nginx是一款Web服务器/反向代理服务器及电子邮件代理服务器，在这里选择使用ngixn做为博客的服务器。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="operator"><span class="keyword">install</span> nginx</span></div></pre></td></tr></table></figure>
+
+
+<ol>
+<li>安装locate:
+ locate是一个搜索工具，可以方便的搜做本地问文件。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum <span class="operator"><span class="keyword">install</span> mlocate</span></div><div class="line">updatedb 					# 生成数据库，可以忽略指定目录，详情RTFM</div><div class="line"><span class="keyword">locate</span> <span class="keyword">default</span>.conf 		# 查找一个名字叫<span class="keyword">default</span>.conf文件位置</div></pre></td></tr></table></figure>
+
+
+<ol>
+<li>安装forever:
+ <code>forever</code>官方说明：<em>一个用来持续（或者说永远）运行一个给定脚本的简单的命令行工具</em>。可以看做是一个nodejs的守护进程，能够启动、停止或重启node app 应用。在此我们可以使们关掉命令行工具后仍然启动hexo服务。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g forever</div><div class="line"><span class="array"># forever start app.js   </span><span class="array"># </span>简单的启动一个应用。 具体STFW</div></pre></td></tr></table></figure>
+
+
+
+<p>如此这些步骤，基本环境就算是完成了。</p>
+<h4 id="Hexo-生成博客"><a href="#Hexo-生成博客" class="headerlink" title="Hexo 生成博客"></a>Hexo 生成博客</h4><p>hexo常用使用的命令:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init 					<span class="preprocessor"># 初始化一个hexo工作目录</span></div><div class="line">hexo <span class="keyword">new</span> <span class="string">'blog name'</span>		<span class="preprocessor"># 生成一个新的博客文件：markdown文件</span></div><div class="line">hexo g 						<span class="preprocessor"># 根据配置和markdown文件生成静态网页文件</span></div><div class="line">hexo s						<span class="preprocessor"># 在本地起一个服务器127.0.0.0:4000可以预览，</span></div><div class="line">hexo s -p <span class="number">8080</span>				<span class="preprocessor"># 指定端口</span></div></pre></td></tr></table></figure>
+
+<h4 id="Hexo-发布"><a href="#Hexo-发布" class="headerlink" title="Hexo 发布"></a>Hexo 发布</h4><p>这次使用的方式是根据基础的想法：使用<code>hexo s</code>在本地起服务，然后使用nginx监听80端口定向到4000端口</p>
+<ol>
+<li>nginx配置：
+ nginx相关的应用还不是很了解，参考了一些网上的文章配置修改nginx的default.conf文件，配置如下：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="title">server</span> {</div><div class="line">   	<span class="title">listen</span>       <span class="number">80</span> default_server;  		                                    <span class="comment"># 监听80端口</span></div><div class="line">   	<span class="title">server_name</span>  xiangry.com, www.xiangry.com;                                 <span class="comment"># 监听域名</span></div><div class="line">   	</div><div class="line">   	<span class="title">location</span> / {</div><div class="line">       	<span class="title">proxy_pass</span>              <span class="url">http://127.0.0.1:4000/</span>;                        <span class="comment"># 反向代理</span></div><div class="line">       	<span class="title">proxy_redirect</span>          <span class="built_in">off</span>;                                           <span class="comment"># 禁止所有的proxy_redirect</span></div><div class="line">       	<span class="title">proxy_set_header</span>        X-Real-Ip       <span class="variable">$remote_addr</span>;                  <span class="comment"># 代理服务器ip头</span></div><div class="line">      		<span class="title">proxy_set_header</span>        X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">   	}</div><div class="line">   }</div></pre></td></tr></table></figure>
+
+<ol>
+<li>forever配置：
+ 在hexo工作目录下建立app.js文件，内容：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> spawn=<span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn;</div><div class="line">free=spawn(<span class="string">'hexo'</span>,[<span class="string">'server'</span>,<span class="string">'-p 4000'</span>]);</div><div class="line"></div><div class="line">free.stdout.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{</div><div class="line">       <span class="built_in">console</span>.log(<span class="string">'standard output:\n'</span> + data);</div><div class="line">});</div><div class="line"></div><div class="line">free.stderr.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{</div><div class="line">       <span class="built_in">console</span>.log(<span class="string">'standard error output:\n'</span> + data);</div><div class="line">});</div><div class="line"></div><div class="line">free.on(<span class="string">'exit'</span>,<span class="function"><span class="keyword">function</span><span class="params">(code,signal)</span></span>{</div><div class="line">       <span class="built_in">console</span>.log(<span class="string">'child process exit, exit:'</span> + code);</div><div class="line">});</div></pre></td></tr></table></figure>
+
+
+<ol>
+<li>启动：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">forever</span> start -<span class="operator">a</span> -l <span class="keyword">forever</span>.<span class="built_in">log</span> -o out.<span class="built_in">log</span> -e err.<span class="built_in">log</span> app.js</div></pre></td></tr></table></figure>
+
+
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><pre><code>本人对nginx和nodejs不熟悉，相关用法需要在日后继续学习。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xiangry.com/2016/08/01/hexo/hexo发布/" data-id="nzkdv76o6z4tiv1v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-霹雳/鬼方赤命" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/01/霹雳/鬼方赤命/" class="article-date">
+  <time datetime="2016-08-01T06:35:43.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/01/霹雳/鬼方赤命/">鬼方赤命</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="鬼方赤命"><a href="#鬼方赤命" class="headerlink" title="鬼方赤命"></a>鬼方赤命</h3><p><img src="http://img-pili.qiniudn.com/guifangchiming" alt="鬼方赤命"></p>
+
+        
+          <p class="article-more-link">
+            <a href="/2016/08/01/霹雳/鬼方赤命/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xiangry.com/2016/08/01/霹雳/鬼方赤命/" data-id="tpucu8a0z6vumut9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/霹雳布袋戏/">霹雳布袋戏</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-霹雳/香染衣" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/01/霹雳/香染衣/" class="article-date">
+  <time datetime="2016-08-01T05:35:43.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/01/霹雳/香染衣/">香染衣</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="香染衣"><a href="#香染衣" class="headerlink" title="香染衣"></a>香染衣</h3><p><img src="http://img-pili.qiniudn.com/pili%2Fdesktop%2Fxiangranyi.jpg" alt="霹雳布袋戏：香染衣" title="霹雳布袋戏：香染衣"></p>
+
+        
+          <p class="article-more-link">
+            <a href="/2016/08/01/霹雳/香染衣/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://xiangry.com/2016/08/01/霹雳/香染衣/" data-id="8lqamdl1vf1941gp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/霹雳布袋戏/">霹雳布袋戏</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2016/08/">&laquo; Prev</a><a class="page-number" href="/archives/2016/08/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习记录/">学习记录</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Unix/">Linux/Unix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/">Lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-shell/">hexo, shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏/">游戏</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/练-随便写点什么/">练 随便写点什么</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/霹雳布袋戏/">霹雳布袋戏</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Linux-Unix/" style="font-size: 10.00px;">Linux/Unix</a><a href="/tags/Lua/" style="font-size: 10.00px;">Lua</a><a href="/tags/hexo/" style="font-size: 15.00px;">hexo</a><a href="/tags/hexo-shell/" style="font-size: 10.00px;">hexo, shell</a><a href="/tags/lua/" style="font-size: 10.00px;">lua</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/shell/" style="font-size: 10.00px;">shell</a><a href="/tags/游戏/" style="font-size: 10.00px;">游戏</a><a href="/tags/练-随便写点什么/" style="font-size: 10.00px;">练 随便写点什么</a><a href="/tags/阅读/" style="font-size: 15.00px;">阅读</a><a href="/tags/霹雳布袋戏/" style="font-size: 20.00px;">霹雳布袋戏</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/08/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/06/netstat/">netstat</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/03/hexo/Nginx-初识/">Nginx 初识</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/02/游戏/游戏测评计划/">游戏测评计划</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/hexo/ssh&sftp/">shell/ssh&amp;sftp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xiangry<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
